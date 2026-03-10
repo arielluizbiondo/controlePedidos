@@ -119,6 +119,12 @@ public class TelaCliente extends javax.swing.JFrame {
 
         jLabel10.setText("Cidade");
 
+        jTxtNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTxtNomeMouseClicked(evt);
+            }
+        });
+
         jTxtNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtNumeroActionPerformed(evt);
@@ -156,6 +162,11 @@ public class TelaCliente extends javax.swing.JFrame {
 
         buttonGroup1.add(jRdBtnFisica);
         jRdBtnFisica.setText("Pessoa Física");
+        jRdBtnFisica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRdBtnFisicaActionPerformed(evt);
+            }
+        });
 
         jCbxUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RR", "SC", "SE", "SP", "TO" }));
 
@@ -176,6 +187,11 @@ public class TelaCliente extends javax.swing.JFrame {
                 "Nome", "Documento", "Tipo Cliente", "E-mail", "Data Cadastro"
             }
         ));
+        jTblClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTblClientesMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTblClientes);
 
         jBtnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/create.png"))); // NOI18N
@@ -350,7 +366,7 @@ public class TelaCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBtnEditar, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -495,6 +511,37 @@ public class TelaCliente extends javax.swing.JFrame {
         listar();
     }//GEN-LAST:event_formWindowOpened
 
+    private void jTblClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblClientesMouseClicked
+       
+       jTxtNome.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(),0).toString());
+       jTxtDocumento.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(),1).toString());
+       jTxtEmail.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(),3).toString());
+       
+       String tipo = jTblClientes.getValueAt(jTblClientes.getSelectedRow(),2).toString();
+       
+       switch (tipo) 
+       {
+            case "Pessoa Física":
+                jRdBtnFisica.setSelected(true);
+                jRdBtnJuridica.setSelected(false);
+                break;
+            case "Pessoa Jurídica":
+                jRdBtnFisica.setSelected(false);
+                jRdBtnJuridica.setSelected(true);
+                break;
+            default:
+                break;
+        }   
+    }//GEN-LAST:event_jTblClientesMouseClicked
+
+    private void jTxtNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTxtNomeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtNomeMouseClicked
+
+    private void jRdBtnFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdBtnFisicaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRdBtnFisicaActionPerformed
+        
     /**
      * @param args the command line arguments
      */
