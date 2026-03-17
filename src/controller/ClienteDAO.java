@@ -149,24 +149,37 @@ public class ClienteDAO {
      * Método responsável pela pesquisa de clientes pelo nome com filtro
      */
     public List<Cliente> listarClienteNome(String nome) {
-        try {
+        try 
+        {
 
             //1 passo criar a lista
             List<Cliente> lista = new ArrayList<>();
 
-            //2 passo - criar o sql , organizar e executar.
-            String sql = "select id_cliente as id, nome, telefone from clientes where nome like ?";
+            //2 passo - criar o sql , organizar e executar. id_cliente as id, nome, telefone, documento, tipo_cliente, email, logradouro, numero,complemento,bairro, cidade,estado,cep,observacoes
+            String sql = "select *  from clientes where nome like ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(sql);
             stmt.setString(1, nome);
             ResultSet rs = stmt.executeQuery();
 
-            while (rs.next()) {
+            while (rs.next()) 
+            {
                 Cliente obj = new Cliente();
 
-                obj.setId(rs.getInt("id"));
+                obj.setId(rs.getInt("id_cliente"));
                 obj.setNome(rs.getString("nome"));
                 obj.setTelefone(rs.getString("telefone"));
+                obj.setDocumento(rs.getString("documento"));
+                obj.setTipoCliente(rs.getString("tipo_cliente"));
+                obj.setEmail(rs.getString("email"));
+                obj.setLogradouro(rs.getString("logradouro"));
+                obj.setNumero(rs.getString("numero"));
+                obj.setComplemento(rs.getString("complemento"));
+                obj.setBairro(rs.getString("bairro"));
+                obj.setCidade(rs.getString("cidade"));
+                obj.setEstado(rs.getString("estado"));
+                obj.setCep(rs.getString("cep"));
+                obj.setObservacoes(rs.getString("observacoes"));
                 lista.add(obj);
             }
 
