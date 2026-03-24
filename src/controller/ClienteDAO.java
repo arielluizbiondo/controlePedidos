@@ -155,7 +155,7 @@ public class ClienteDAO {
             //1 passo criar a lista
             List<Cliente> lista = new ArrayList<>();
 
-            //2 passo - criar o sql , organizar e executar. id_cliente as id, nome, telefone, documento, tipo_cliente, email, logradouro, numero,complemento,bairro, cidade,estado,cep,observacoes
+            //2 passo - criar o sql , organizar e executar.
             String sql = "select *  from clientes where nome like ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(sql);
